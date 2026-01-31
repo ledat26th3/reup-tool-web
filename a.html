@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tool Reup Video - v1.0.2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-main: #0f0f1a;
+      --bg-secondary: #1a1a2e;
+      --text-primary: #e0e0ff;
+      --text-secondary: #a0a0cc;
+      --accent: #7c3aed;
+      --accent-hover: #9f7aea;
+      --border: #2a2a4a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 240px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      height: 100vh;
+      position: fixed;
+      padding: 20px 0;
+      overflow-y: auto;
+    }
+    .logo {
+      padding: 0 20px 30px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: center;
+    }
+    .menu-item {
+      padding: 12px 20px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .menu-item:hover, .menu-item.active {
+      background: rgba(124,58,237,0.15);
+      color: white;
+    }
+    .menu-item svg { width:20px; height:20px; }
+    .main-content {
+      margin-left: 240px;
+      flex: 1;
+      padding: 30px;
+    }
+    .header {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    .card {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .connect-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .connect-item h4 { margin: 10px 0; font-size: 1.1rem; }
+    .btn-connect {
+      background: linear-gradient(90deg, #7c3aed, #5b21b6);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover { opacity: 0.9; transform: translateY(-2px); }
+    .status-connected { color: #22c55e; font-weight: 600; }
+    .status-disconnected { color: #ef4444; }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label { display: block; margin-bottom: 8px; color: var(--text-secondary); }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .info-box {
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">Tool Reup Video v1.0.2</div>
+    <div class="menu-item active"><span>🏠</span> Tổng quan</div>
+    <div class="menu-item"><span>📥</span> Tải video</div>
+    <div class="menu-item"><span>🔑</span> Tìm chủ đề (Key)</div>
+    <div class="menu-item"><span>📺</span> Tải kênh</div>
+    <div class="menu-item"><span>🛡️</span> Lách bản quyền</div>
+    <div class="menu-item"><span>⚙️</span> Công cụ nâng cao</div>
+    <div class="menu-item"><span>🎥</span> Review Phim</div>
+    <div class="menu-item"><span>📂</span> Thư viện video</div>
+    <div class="menu-item"><span>🚀</span> Auto Upload</div>
+    <div class="menu-item"><span>⚙️</span> Cài đặt</div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1 class="header">Auto Upload</h1>
+
+    <div class="card">
+      <div class="card-title">Kết nối tài khoản</div>
+      <p>Kết nối tài khoản để upload tự động lên các nền tảng.</p>
+      <div class="connect-grid">
+        <div class="connect-item">
+          <div style="font-size:2.5rem;">📺</div>
+          <h4>YouTube</h4>
+          <p class="status-disconnected">Chưa kết nối</p>
+          <button class="btn-connect">Kết nối</button>
+        </div>
+        <div class="connect-item">
+          <div style="font-size:2.5rem;">🎵</div>
+          <h4>TikTok</h4>
+          <p class="status-disconnected">Chưa kết nối</p>
+          <button class="btn-connect">Kết nối</button>
+        </div>
+        <div class="connect-item">
+          <div style="font-size:2.5rem;">📘</div>
+          <h4>Facebook</h4>
+          <p class="status-disconnected">Sắp có</p>
+          <button class="btn-connect" disabled>Đang phát triển</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tạo Upload Job</div>
+      <div class="form-group">
+        <label>Nền tảng</label>
+        <select>
+          <option>-- Chọn nền tảng --</option>
+          <option>YouTube Shorts</option>
+          <option>TikTok</option>
+          <option>Facebook Reels</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Chọn video (từ thư viện)</label>
+        <select>
+          <option>-- Chọn video --</option>
+          <option>Video remix 1.mp4</option>
+          <option>Review phim mới.mp4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tiêu đề video</label>
+        <input type="text" placeholder="Nhập tiêu đề video"/>
+      </div>
+      <div class="form-group">
+        <label>Mô tả (optional)</label>
+        <textarea rows="4" placeholder="Nhập mô tả video..."></textarea>
+      </div>
+      <button class="btn-primary">Tạo Job & Upload</button>
+      <div class="info-box">
+        Tài khoản đang sử dụng: touyen<br>
+        Hết hạn: 18:10:54 27/12/2025
+      </div>
+    </div>
+
+    <!-- Phần Review Phim (giả lập) -->
+    <div class="card">
+      <div class="card-title">Tạo kịch bản Review Phim</div>
+      <div class="form-group">
+        <label>Nhập tên phim (AI Writer)</label>
+        <input type="text" placeholder="Ví dụ: Avengers Endgame, Squid Game..."/>
+      </div>
+      <div class="form-group">
+        <label>Phong cách</label>
+        <select>
+          <option>Hài hước, vui nhộn</option>
+          <option>Phân tích sâu</option>
+          <option>Ngắn gọn hấp dẫn</option>
+        </select>
+      </div>
+      <button class="btn-primary">Tạo kịch bản bằng AI</button>
+      <div style="margin-top:20px; color:#ccc;">Kết quả sẽ hiển thị ở đây (giả lập)...</div>
+    </div>
+  </div>
+
+  <script>
+    // Active menu item
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // Nút kết nối giả lập
+    document.querySelectorAll('.btn-connect').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!btn.disabled) {
+          alert('Kết nối tài khoản (giả lập) - Chức năng này cần backend thực tế!');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
